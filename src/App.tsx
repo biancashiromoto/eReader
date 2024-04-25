@@ -40,7 +40,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="reader-screen">
       <Button
           className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
           name="toggle-mode"
@@ -64,20 +64,20 @@ function App() {
       <div className="buttons-container">
         <div className="font-size-buttons">
           <Button
-            className="increase-font-size-button"
+            className={`${config.isDarkModeOn ? "increase-font-size-button-dark" : "increase-font-size-button-light"} increase-font-size-button font-size-button`}
             label="Increase font size"
             name="increase-font-size"
             onClick={() => changeFontSize("increase")}
           />
           <Button
-            className="decrease-font-size-button"
+            className={`${config.isDarkModeOn ? "decrease-font-size-button-dark" : "decrease-font-size-button-light"} decrease-font-size-button font-size-button`}
             label="Decrease font size"
             name="decrease-font-size"
             onClick={() => changeFontSize("decrease")}
           />
         </div>
         <Button
-          className="clear-preferences-button"
+          className={`${config.isDarkModeOn ? "clear-preferences-button-dark" : "clear-preferences-button-light"} clear-preferences-button`}
           name="clear-preferences"
           label="Clear preferences"
           onClick={() => clearPreferences()}
