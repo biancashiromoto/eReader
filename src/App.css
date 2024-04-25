@@ -25,3 +25,14 @@
   gap: 10px;
   justify-content: center;
 }
+
+.font-size-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-mode-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
