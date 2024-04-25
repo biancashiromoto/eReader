@@ -3,6 +3,10 @@ import { configType } from "../types/Types";
 export default class Utils {
 
   public documentStyle: CSSStyleDeclaration = document.body.style;
+  public defaultConfig: configType = {
+    fontSize: 18,
+    isDarkModeOn: true
+  }
 
   /**
    * savePreferences
