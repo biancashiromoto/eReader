@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Utils from "./utils/Utils";
 import { actions, configType } from "./types/Types";
+import Button from "./components/Button/Button";
 
 function App() {
   const utils = new Utils();
@@ -42,6 +43,7 @@ function App() {
     <div>
       <h1>E-reader</h1>
       <article
+        className="text-display"
       >
         <p
           style={{fontSize:`${config.fontSize}px`}}
@@ -54,28 +56,28 @@ function App() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium ad sapiente architecto voluptatem quas modi? Magnam officia nisi quis ratione sed! Dolores, quaerat! Atque perferendis voluptas blanditiis! Ab, similique.
         </p>
       </article>
-      <button
-        name="increase-font-size"
-        onClick={() => changeFontSize("increase")}
-      >
-        Increase font size
-      </button>
-      <button
-        name="decrease-font-size"
-        onClick={() => changeFontSize("decrease")}
-      >
-        Decrease font size
-      </button>
-      <button
-        onClick={() => toggleMode()}
-      >
-        Toggle mode
-      </button>
-      <button
-        onClick={() => clearPreferences()}
-      >
-        Clear preferences
-      </button>
+      <div className="buttons-container">
+        <Button
+          name="increase-font-size"
+          label="Increase font size"
+          onClick={() => changeFontSize("increase")}
+        />
+        <Button
+          name="decrease-font-size"
+          label="Decrease font size"
+          onClick={() => changeFontSize("decrease")}
+        />
+        <Button
+          name="toggle-mode"
+          label="Toggle mode"
+          onClick={() => toggleMode()}
+        />
+        <Button
+          name="clear-preferences"
+          label="Clear preferences"
+          onClick={() => clearPreferences()}
+        />
+      </div>
     </div>
   )
 }
