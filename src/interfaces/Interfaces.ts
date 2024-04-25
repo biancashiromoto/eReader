@@ -1,7 +1,8 @@
 import { MouseEventHandler } from "react";
 
 export default interface ButtonProps {
-  name: string;
+  className?: string;
+  label?: string;
+  name?: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  label: string;
 }
