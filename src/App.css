@@ -32,7 +32,16 @@
 }
 
 .toggle-mode-button {
+  background-color: unset;
   position: absolute;
-  top: 25px;
   right: 25px;
+  top: 25px;
+}
+
+.toggle-mode-button-light::before {
+  content: url("./assets/images/light-mode.svg");
+}
+
+.toggle-mode-button-dark::before {
+  content: url("./assets/images/dark-mode.svg");
 }
