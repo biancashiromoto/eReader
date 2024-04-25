@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [config, setConfig] = useState({
+    fontSize: 18,
+    isDarkModeOn: true
+  });
+
+  useEffect(() => {
+    document.body.style.backgroundColor = config.isDarkModeOn ? "black" : "white";
+  }, [config.isDarkModeOn])
+
+  const toggleMode = () => {
+    setConfig(prevState => ({
+      ...prevState,
+      isDarkModeOn: !prevState.isDarkModeOn
+    }));
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div style={{backgroundColor: config.isDarkModeOn ? "black" : "white"}}>
+      <h1
+        style={{color: config.isDarkModeOn ? "white" : "black"}}
+      >E-reader</h1>
+      <article
+      >
+        <p
+          style={{fontSize:`${config.fontSize}px`, color: config.isDarkModeOn ? "white" : "black"}}
+        >
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti culpa error tempore eligendi architecto earum delectus placeat quisquam. Rerum eveniet cum voluptas sapiente sed voluptates animi laborum impedit, quos ab.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+        <p
+          style={{fontSize:`${config.fontSize}px`, color: config.isDarkModeOn ? "white" : "black"}}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium ad sapiente architecto voluptatem quas modi? Magnam officia nisi quis ratione sed! Dolores, quaerat! Atque perferendis voluptas blanditiis! Ab, similique.
+        </p>
+      </article>
+      <button
+        onClick={() => {
+          setConfig((prevState) => ({
+            ...prevState,
+            fontSize: prevState.fontSize + 2
+          }));
+        }}
+      >
+        Increase font size
+      </button>
+      <button
+        onClick={() => {
+          setConfig((prevState) => ({
+            ...prevState,
+            fontSize: prevState.fontSize - 2
+          }));
+        }}
+      >
+        Decrease font size
+      </button>
+      <button
+        onClick={() => toggleMode()}
+      >
+        Toggle mode
+      </button>
+    </div>
   )
 }
 
-export default App
+export default App;
