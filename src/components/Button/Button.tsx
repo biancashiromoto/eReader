@@ -1,11 +1,12 @@
 import ButtonProps from "../../interfaces/Interfaces";
 
-const Button: React.FC<ButtonProps> = ({name, onClick, label}) => {
+const Button: React.FC<ButtonProps> = ({name, onClick, label, className}) => {
   return (
     <button
-      type="button"
+      className={className}
       name={name}
       onClick={onClick}
+      type="button"
     >
       {label}
     </button>
