@@ -34,6 +34,10 @@ function App() {
     }));
   }
 
+  const clearPreferences = () => {
+    setConfig(utils.defaultConfig);
+  }
+
   return (
     <div>
       <h1>E-reader</h1>
@@ -66,6 +70,11 @@ function App() {
         onClick={() => toggleMode()}
       >
         Toggle mode
+      </button>
+      <button
+        onClick={() => clearPreferences()}
+      >
+        Clear preferences
       </button>
     </div>
   )
