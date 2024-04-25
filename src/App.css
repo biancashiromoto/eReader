@@ -12,3 +12,16 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.text-display {
+  text-align: justify;
+  margin: 0 50px;
+}
+
+.buttons-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
