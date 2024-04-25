@@ -41,6 +41,12 @@ function App() {
 
   return (
     <div>
+      <Button
+          className="toggle-mode-button"
+          name="toggle-mode"
+          label="Toggle mode"
+          onClick={() => toggleMode()}
+        />
       <h1>E-reader</h1>
       <article
         className="text-display"
@@ -57,22 +63,22 @@ function App() {
         </p>
       </article>
       <div className="buttons-container">
+        <div className="font-size-buttons">
+          <Button
+            className="increase-font-size-button"
+            label="Increase font size"
+            name="increase-font-size"
+            onClick={() => changeFontSize("increase")}
+          />
+          <Button
+            className="decrease-font-size-button"
+            label="Decrease font size"
+            name="decrease-font-size"
+            onClick={() => changeFontSize("decrease")}
+          />
+        </div>
         <Button
-          name="increase-font-size"
-          label="Increase font size"
-          onClick={() => changeFontSize("increase")}
-        />
-        <Button
-          name="decrease-font-size"
-          label="Decrease font size"
-          onClick={() => changeFontSize("decrease")}
-        />
-        <Button
-          name="toggle-mode"
-          label="Toggle mode"
-          onClick={() => toggleMode()}
-        />
-        <Button
+          className="clear-preferences-button"
           name="clear-preferences"
           label="Clear preferences"
           onClick={() => clearPreferences()}
