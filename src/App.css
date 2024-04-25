@@ -48,8 +48,8 @@ button {
 .font-size-buttons {
   align-items: center;
   display: flex;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: center;
+  gap: 15px;
 }
 
 .toggle-mode-button {
@@ -81,22 +81,13 @@ button {
 }
 
 .font-size-button {
-  border: solid 1px black;
-  font-size: .75rem;
+  font-size: 2rem;
+  padding: 0;
 }
 
-.increase-font-size-button-light::before {
-  content: url("./assets/images/arrow-up-light.svg");
-}
-
-.increase-font-size-button-dark::before {
-  content: url("./assets/images/arrow-up-dark.svg");
-}
-
-.decrease-font-size-button-light::before {
-  content: url("./assets/images/arrow-down-light.svg");
-}
-
-.decrease-font-size-button-dark::before {
-  content: url("./assets/images/arrow-down-dark.svg");
+.font-size-range {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  max-width: 60vw;
 }
