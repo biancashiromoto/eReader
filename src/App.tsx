@@ -28,11 +28,18 @@ function App() {
     }));
   }
 
-  const changeFontSize = (action: actions) => {
-    setConfig((prevState) => ({
-      ...prevState,
-      fontSize: action === "increase" ? prevState.fontSize + 2 : prevState.fontSize - 2
-    }));
+  const changeFontSize = (action: actions | null, value: number | null) => {
+    if (!value) {
+      setConfig((prevState) => ({
+        ...prevState,
+        fontSize: action === "increase" ? prevState.fontSize + 1 : prevState.fontSize - 1
+      }));
+    } else {
+      setConfig({
+        ...config,
+        fontSize: value,
+      })
+    }
   }
 
   const clearPreferences = () => {
@@ -64,16 +71,29 @@ function App() {
       <div className="buttons-container">
         <div className="font-size-buttons">
           <Button
-            className={`${config.isDarkModeOn ? "increase-font-size-button-dark" : "increase-font-size-button-light"} increase-font-size-button font-size-button`}
-            label="Increase font size"
-            name="increase-font-size"
-            onClick={() => changeFontSize("increase")}
-          />
-          <Button
-            className={`${config.isDarkModeOn ? "decrease-font-size-button-dark" : "decrease-font-size-button-light"} decrease-font-size-button font-size-button`}
-            label="Decrease font size"
+            className="decrease-font-size-button font-size-button"
             name="decrease-font-size"
-            onClick={() => changeFontSize("decrease")}
+            label="-"
+            onClick={() => changeFontSize("decrease", null)}
+          />
+          <label
+            aria-hidden="true"
+            className="font-size-range"
+          >
+            {`Font size: ${config.fontSize}px`}
+            <input
+              type="range"
+              value={config.fontSize}
+              max={40}
+              min={14}
+              onChange={(e) => changeFontSize(null, e.target.valueAsNumber)}
+            />
+          </label>
+          <Button
+            className="increase-font-size-button font-size-button"
+            label="+"
+            name="increase-font-size"
+            onClick={() => changeFontSize("increase", null)}
           />
         </div>
         <Button
