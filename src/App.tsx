@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Utils from "./utils/Utils";
+import { actions, configType } from "./types/Types";
 
 function App() {
-  const loadPreferences = () => {
-    const preferences = localStorage.getItem("config");
-    return preferences ? JSON.parse(preferences) : {fontSize: 18, isDarkModeOn: true};
-  }
+  const utils = new Utils();
 
-  const [config, setConfig] = useState(() => {
-    const {fontSize, isDarkModeOn} = loadPreferences();
+  const [config, setConfig] = useState<configType>(() => {
+    const {fontSize, isDarkModeOn} = utils.loadPreferences();
     return {
       fontSize,
       isDarkModeOn
@@ -16,9 +15,9 @@ function App() {
   });
 
   useEffect(() => {
-    document.body.style.backgroundColor = config.isDarkModeOn ? "black" : "white";
-    document.body.style.color = config.isDarkModeOn ? "white" : "black";
-    savePreferences();
+    utils.documentStyle.backgroundColor = config.isDarkModeOn ? "black" : "white";
+    utils.documentStyle.color = config.isDarkModeOn ? "white" : "black";
+    utils.savePreferences(config);
   }, [config])
 
   const toggleMode = () => {
@@ -28,18 +27,12 @@ function App() {
     }));
   }
 
-  const changeFontSize = (action: string) => {
+  const changeFontSize = (action: actions) => {
     setConfig((prevState) => ({
       ...prevState,
       fontSize: action === "increase" ? prevState.fontSize + 2 : prevState.fontSize - 2
     }));
   }
-
-  const savePreferences = () => {
-    localStorage.setItem("config", JSON.stringify(config));
-  }
-
-
 
   return (
     <div>
@@ -58,11 +51,13 @@ function App() {
         </p>
       </article>
       <button
+        name="increase-font-size"
         onClick={() => changeFontSize("increase")}
       >
         Increase font size
       </button>
       <button
+        name="decrease-font-size"
         onClick={() => changeFontSize("decrease")}
       >
         Decrease font size
