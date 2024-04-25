@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="35" height="35">
+	<title>arrow-down-light</title>
+	<defs>
+		<image  width="34" height="48" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAwCAMAAABDh1hgAAAAAXNSR0IB2cksfwAAAJ9QTFRFAAAAGRkZMzMzGRkZMzMzDAwMGRkZDAwMGRkZGRkZGRkZGRkZGRkZMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzGRkZMzMzMzMzMzMzMzMzMzMzGRkZJiYmMzMzMzMzJiYmJiYmJiYmMzMzJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmMzMzMzMzDAwMTy4YCgAAADV0Uk5TAHr/TJ8tYA8ge3x+f4CCg4SGh4mKGpzN4r++MFr8/mJbZf1nXmtscHJ2ZHd7gYdpiYqOkQAA06ijAAABBUlEQVR4nNXQXUsCQRQG4Pe4yGr5WdTVQEaxoUn2/39DVPRBWUQFdqVm2lqGbBa7m+04Z/ckeGHv5ZxnZt4ZQhAizGYyCUf/kyRkscRiung6WaZ/+QNJM2Ssk4TMQWzmog+dMHXtd5Fk3kSSHYpkxRXJ6qtIcgOR5PsiKbyIpNgTSelZJOWuSNY64WiD/PPW2wbZpGAvQdGTMf2NosdvWfHijbLu/S6V1EOcSN+FdXc/eaPsW/y8iDcqc4MpYY3KNhEh2LIM41xDI6bZu8IMQc1tRUX1EgbBthcxtQswJGr2z8ES7IxDUz9DDEGj55uDU8SSwDROkEDgjFqHx0gkcPJ0pK98AZ5QVEydq3dMAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="8" y="1"/>
+</svg>
