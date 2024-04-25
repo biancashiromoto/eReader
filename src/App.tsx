@@ -42,9 +42,8 @@ function App() {
   return (
     <div>
       <Button
-          className="toggle-mode-button"
+          className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
           name="toggle-mode"
-          label="Toggle mode"
           onClick={() => toggleMode()}
         />
       <h1>E-reader</h1>
