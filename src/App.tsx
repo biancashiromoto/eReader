@@ -2,15 +2,24 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [config, setConfig] = useState({
-    fontSize: 18,
-    isDarkModeOn: true
+  const loadPreferences = () => {
+    const preferences = localStorage.getItem("config");
+    return preferences ? JSON.parse(preferences) : {fontSize: 18, isDarkModeOn: true};
+  }
+
+  const [config, setConfig] = useState(() => {
+    const {fontSize, isDarkModeOn} = loadPreferences();
+    return {
+      fontSize,
+      isDarkModeOn
+    }
   });
 
   useEffect(() => {
     document.body.style.backgroundColor = config.isDarkModeOn ? "black" : "white";
     document.body.style.color = config.isDarkModeOn ? "white" : "black";
-  }, [config.isDarkModeOn])
+    savePreferences();
+  }, [config])
 
   const toggleMode = () => {
     setConfig(prevState => ({
@@ -25,6 +34,11 @@ function App() {
       fontSize: action === "increase" ? prevState.fontSize + 2 : prevState.fontSize - 2
     }));
   }
+
+  const savePreferences = () => {
+    localStorage.setItem("config", JSON.stringify(config));
+  }
+
 
 
   return (
