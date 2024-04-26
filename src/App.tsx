@@ -26,10 +26,19 @@ function App() {
 
   // Resizes the text font to a new size.
   const resizeFont = (newSize: number) => {
-    setConfig({
-      ...config,
-      fontSize: newSize
-    })
+    const isValidFontSize: boolean = utils.validateFontSize(newSize);
+    isValidFontSize ? (
+      setConfig({
+        ...config,
+        fontSize: newSize
+      })
+    ) : (
+      setConfig((prevState) => ({
+        ...config,
+        fontSize:prevState.fontSize
+      })
+      )
+    )
   }
 
   // Sets preferences to default
@@ -80,8 +89,8 @@ function App() {
             <input
               type="range"
               value={config.fontSize}
-              max={40}
-              min={14}
+              max={utils.validFontSizes.max}
+              min={utils.validFontSizes.min}
               onChange={(e) => resizeFont(e.target.valueAsNumber)}
             />
           </label>
