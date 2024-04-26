@@ -47,14 +47,7 @@ export default class Utils {
    * @param isDarkModeOn Boolean indicating wether dark mode is enabled or not.
    */
   public toggleMode(isDarkModeOn: configType["isDarkModeOn"]) {
-    isDarkModeOn ? (
-      // Enables dark mode
-      document.body.classList.add("dark-mode"),
-      document.body.classList.remove("light-mode")
-    ) : (
-      // Disables dark mode
-      document.body.classList.add("light-mode"),
-      document.body.classList.remove("dark-mode")
-    )
+    document.body.classList.toggle("dark-mode", isDarkModeOn);
+    document.body.classList.toggle("light-mode", !isDarkModeOn);
   }
 }
