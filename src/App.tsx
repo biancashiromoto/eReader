@@ -24,21 +24,14 @@ function App() {
     utils.savePreferences(config);
   }, [config])
 
-  // Resizes the text font to a new size.
+  // Resizes the text font to a new size passed as parameter.
   const resizeFont = (newSize: number) => {
-    const isValidFontSize: boolean = utils.validateFontSize(newSize);
-    isValidFontSize ? (
+    if (utils.validateFontSize(newSize)) {
       setConfig({
         ...config,
         fontSize: newSize
       })
-    ) : (
-      setConfig((prevState) => ({
-        ...config,
-        fontSize:prevState.fontSize
-      })
-      )
-    )
+    }
   }
 
   // Sets preferences to default
@@ -47,10 +40,14 @@ function App() {
   }
 
   return (
-    <div className="reader-screen">
+    <div
+      className="reader-screen"
+      data-testid="reader-screen"
+    >
       <Button
           className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
           name="toggle-mode"
+          label="Toggle mode"
           onClick={() => {
             utils.toggleMode(config.isDarkModeOn);
             setConfig(prevState => ({
@@ -58,6 +55,7 @@ function App() {
                   isDarkModeOn: !prevState.isDarkModeOn
                 }));
           }}
+          data-testid="toggle-mode-button"
         />
       <h1>E-reader</h1>
       <article
@@ -83,10 +81,12 @@ function App() {
             onClick={() => resizeFont(config.fontSize - 1)}
           />
           <label
+            htmlFor="font-size-range"
             className="font-size-range"
           >
             {`Font size: ${config.fontSize}px`}
             <input
+              id="font-size-range"
               type="range"
               value={config.fontSize}
               max={utils.validFontSizes.max}
@@ -106,6 +106,7 @@ function App() {
           name="clear-preferences"
           label="Clear preferences"
           onClick={() => clearPreferences()}
+          data-testid="clear-preferences-button"
         />
       </div>
     </div>
