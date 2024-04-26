@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Utils from "./utils/Utils";
-import { actions, configType } from "./types/Types";
+import { configType } from "./types/Types";
 import Button from "./components/Button/Button";
 
 function App() {
@@ -16,17 +16,9 @@ function App() {
   });
 
   useEffect(() => {
-    utils.documentStyle.backgroundColor = config.isDarkModeOn ? "black" : "white";
-    utils.documentStyle.color = config.isDarkModeOn ? "white" : "black";
+    utils.toggleMode(config.isDarkModeOn);
     utils.savePreferences(config);
   }, [config])
-
-  const toggleMode = () => {
-    setConfig(prevState => ({
-      ...prevState,
-      isDarkModeOn: !prevState.isDarkModeOn
-    }));
-  }
 
   const resizeFont = (newSize: number) => {
     setConfig({
@@ -44,7 +36,13 @@ function App() {
       <Button
           className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
           name="toggle-mode"
-          onClick={() => toggleMode()}
+          onClick={() => {
+            utils.toggleMode(config.isDarkModeOn);
+            setConfig(prevState => ({
+                  ...prevState,
+                  isDarkModeOn: !prevState.isDarkModeOn
+                }));
+          }}
         />
       <h1>E-reader</h1>
       <article
@@ -70,7 +68,6 @@ function App() {
             onClick={() => resizeFont(config.fontSize - 1)}
           />
           <label
-            aria-hidden="true"
             className="font-size-range"
           >
             {`Font size: ${config.fontSize}px`}
