@@ -10,16 +10,27 @@ export default class Utils {
 
   /**
    * savePreferences
-preferences   */
+   */
   public savePreferences(preferences: configType): void {
     localStorage.setItem("config", JSON.stringify(preferences));
   }
 
   /**
    * loadPreferences
-preferences: config   */
+   */
   public loadPreferences(): configType {
     const preferences = localStorage.getItem("config");
     return preferences ? JSON.parse(preferences) : {fontSize: 18, isDarkModeOn: true};
+  }
+
+  /**
+   * toggleMode
+   */
+  public toggleMode(isDarkModeOn: configType["isDarkModeOn"]) {
+    isDarkModeOn ? (
+      document.body.classList.add("dark-mode")
+    ) : (
+      document.body.classList.add("light-mode")
+    )
   }
 }
