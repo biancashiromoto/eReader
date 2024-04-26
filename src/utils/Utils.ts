@@ -1,4 +1,4 @@
-import { configType } from "../types/Types";
+import { configType, validFontSizes } from "../types/Types";
 
 export default class Utils {
 
@@ -6,6 +6,21 @@ export default class Utils {
   public defaultConfig: configType = {
     fontSize: 18,
     isDarkModeOn: true
+  }
+
+  // Valid font sizes
+  public validFontSizes: validFontSizes = {
+    max: 40,
+    min: 12
+  }
+
+  /**
+   *  Validates the new font size.
+   * @param newSize Number indicating the new font size in pixels
+   * @returns Boolean representing wether the new size is between tha maximum and minimum values allowed 
+   */
+  public  validateFontSize(newSize: number) {
+    return newSize <= this.validFontSizes.max && newSize >= this.validFontSizes.min
   }
 
   /**
