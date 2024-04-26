@@ -28,18 +28,11 @@ function App() {
     }));
   }
 
-  const changeFontSize = (action: actions | null, value: number | null) => {
-    if (!value) {
-      setConfig((prevState) => ({
-        ...prevState,
-        fontSize: action === "increase" ? prevState.fontSize + 1 : prevState.fontSize - 1
-      }));
-    } else {
-      setConfig({
-        ...config,
-        fontSize: value,
-      })
-    }
+  const resizeFont = (newSize: number) => {
+    setConfig({
+      ...config,
+      fontSize: newSize
+    })
   }
 
   const clearPreferences = () => {
@@ -74,7 +67,7 @@ function App() {
             className="decrease-font-size-button font-size-button"
             name="decrease-font-size"
             label="-"
-            onClick={() => changeFontSize("decrease", null)}
+            onClick={() => resizeFont(config.fontSize - 1)}
           />
           <label
             aria-hidden="true"
@@ -86,14 +79,14 @@ function App() {
               value={config.fontSize}
               max={40}
               min={14}
-              onChange={(e) => changeFontSize(null, e.target.valueAsNumber)}
+              onChange={(e) => resizeFont(e.target.valueAsNumber)}
             />
           </label>
           <Button
             className="increase-font-size-button font-size-button"
             label="+"
             name="increase-font-size"
-            onClick={() => changeFontSize("increase", null)}
+            onClick={() => resizeFont(config.fontSize + 1)}
           />
         </div>
         <Button
