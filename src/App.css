@@ -1,11 +1,11 @@
 .dark-mode {
   background-color: #242424;
-  color: #ffffff;
+  color: #efefef;
 }
 
 .light-mode {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #efefef;
+  color: #242424;
 }
 
 #root {
