@@ -2,21 +2,25 @@ import { configType } from "../types/Types";
 
 export default class Utils {
 
-  public documentStyle: CSSStyleDeclaration = document.body.style;
+  // Default configuration for preferences
   public defaultConfig: configType = {
     fontSize: 18,
     isDarkModeOn: true
   }
 
   /**
-   * savePreferences
+   * Saves preferences to local storage.
+   * @param preferences The preferences object to be saved.
    */
   public savePreferences(preferences: configType): void {
     localStorage.setItem("config", JSON.stringify(preferences));
   }
 
   /**
-   * loadPreferences
+   * Loads preferences from local storage.
+   * If no preferences are found, returns the default preferences.
+   * If preferences are found in local storage, returns the loaded preferences.
+   * @returns The loaded preferences object or the default preferences.
    */
   public loadPreferences(): configType {
     const preferences = localStorage.getItem("config");
@@ -24,13 +28,16 @@ export default class Utils {
   }
 
   /**
-   * toggleMode
+   * Toggles dark mode on or off.
+   * @param isDarkModeOn Boolean indicating wether dark mode is enabled or not.
    */
   public toggleMode(isDarkModeOn: configType["isDarkModeOn"]) {
     isDarkModeOn ? (
+      // Enables dark mode
       document.body.classList.add("dark-mode"),
       document.body.classList.remove("light-mode")
     ) : (
+      // Disables dark mode
       document.body.classList.add("light-mode"),
       document.body.classList.remove("dark-mode")
     )

@@ -5,8 +5,11 @@ import { configType } from "./types/Types";
 import Button from "./components/Button/Button";
 
 function App() {
+
+  // Instance of class Utils to handle preferences changes
   const utils = new Utils();
 
+  // State hook to manage configuration settings
   const [config, setConfig] = useState<configType>(() => {
     const {fontSize, isDarkModeOn} = utils.loadPreferences();
     return {
@@ -15,11 +18,13 @@ function App() {
     }
   });
 
+  // Effect hook to toggle dark mode and save preferences when configurations are changed
   useEffect(() => {
     utils.toggleMode(config.isDarkModeOn);
     utils.savePreferences(config);
   }, [config])
 
+  // Resizes the text font to a new size.
   const resizeFont = (newSize: number) => {
     setConfig({
       ...config,
@@ -27,6 +32,7 @@ function App() {
     })
   }
 
+  // Sets preferences to default
   const clearPreferences = () => {
     setConfig(utils.defaultConfig);
   }
