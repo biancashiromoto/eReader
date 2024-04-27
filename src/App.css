@@ -54,7 +54,6 @@ button {
 
 .toggle-mode-button {
   background-color: unset;
-  margin: 25px 25px auto auto;
   padding: 0;
 }
 
@@ -90,4 +89,30 @@ button {
   flex-direction: column;
   width: 50vw;
   max-width: 60vw;
+}
+
+.header-buttons-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.hide {
+  display: none;
+  position: absolute;
+  top: 50%;
+}
+
+.show {
+  display: block;
+}
+
+ul {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 20px;
 }
