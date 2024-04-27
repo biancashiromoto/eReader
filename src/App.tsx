@@ -45,6 +45,7 @@ function App() {
       data-testid="reader-screen"
     >
       <Button
+          aria-label="Toggle mode"
           className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
           name="toggle-mode"
           label="Toggle mode"
@@ -56,6 +57,7 @@ function App() {
                 }));
           }}
           data-testid="toggle-mode-button"
+          role="button"
         />
       <h1>E-reader</h1>
       <article
@@ -79,6 +81,8 @@ function App() {
             name="decrease-font-size"
             label="-"
             onClick={() => resizeFont(config.fontSize - 1)}
+            aria-label="Decrease font size"
+            role="button"
           />
           <label
             htmlFor="font-size-range"
@@ -92,13 +96,15 @@ function App() {
               max={utils.validFontSizes.max}
               min={utils.validFontSizes.min}
               onChange={(e) => resizeFont(e.target.valueAsNumber)}
+              aria-label={`Font Size: ${config.fontSize}px`}
             />
           </label>
           <Button
             className="increase-font-size-button font-size-button"
             label="+"
             name="increase-font-size"
-            onClick={() => resizeFont(config.fontSize + 1)}
+            onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
+            role="button"
           />
         </div>
         <Button
@@ -107,6 +113,8 @@ function App() {
           label="Clear preferences"
           onClick={() => clearPreferences()}
           data-testid="clear-preferences-button"
+          aria-label="Clear preferences"
+          role="button"
         />
       </div>
     </div>
