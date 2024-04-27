@@ -18,6 +18,8 @@ function App() {
     }
   });
 
+  const [isMenuHidden, setIsMenuHidden] = useState<boolean>(true);
+
   // Effect hook to toggle dark mode and save preferences when configurations are changed
   useEffect(() => {
     utils.toggleMode(config.isDarkModeOn);
@@ -41,25 +43,52 @@ function App() {
 
   return (
     <div
-      className="reader-screen"
-      data-testid="reader-screen"
+    className="reader-screen"
+    data-testid="reader-screen"
     >
-      <Button
-          aria-label="Toggle mode"
-          className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
-          name="toggle-mode"
-          label="Toggle mode"
-          onClick={() => {
-            utils.toggleMode(config.isDarkModeOn);
-            setConfig(prevState => ({
-                  ...prevState,
-                  isDarkModeOn: !prevState.isDarkModeOn
-                }));
-          }}
-          data-testid="toggle-mode-button"
-          role="button"
-        />
-      <h1>E-reader</h1>
+      <header>
+        <div className="header-buttons-container">
+          <Button 
+            aria-label="Toggle menu"
+            className={`toggle-menu-button`}
+            label="Toggle menu"
+            onClick={() => {
+              utils.toggleMenu(isMenuHidden);
+              setIsMenuHidden(prevState => !prevState)
+            }}
+          />
+          <Button
+            aria-label="Toggle mode"
+            className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
+            name="toggle-mode"
+            label="Toggle mode"
+            onClick={() => {
+              utils.toggleMode(config.isDarkModeOn);
+              setConfig(prevState => ({
+                    ...prevState,
+                    isDarkModeOn: !prevState.isDarkModeOn
+                  }));
+            }}
+            data-testid="toggle-mode-button"
+            role="button"
+          />
+        </div>
+        <nav>
+          <ul>
+            <li>Font family</li>
+            <li>Font size</li>
+            <li
+              data-testid="clear-preferences"
+              onClick={() => {
+                clearPreferences();
+              }}
+            >
+              Clear preferences
+            </li>
+          </ul>
+        </nav>
+        <h1>E-reader</h1>
+      </header>
       <article
         className="text-display"
       >
@@ -72,6 +101,11 @@ function App() {
           style={{fontSize:`${config.fontSize}px`}}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium ad sapiente architecto voluptatem quas modi? Magnam officia nisi quis ratione sed! Dolores, quaerat! Atque perferendis voluptas blanditiis! Ab, similique.
+        </p>
+        <p
+          style={{fontSize:`${config.fontSize}px`}}
+        >
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur incidunt officia harum voluptatibus laboriosam consectetur qui itaque optio ut quaerat! Placeat odit sapiente voluptatibus quos, culpa sunt deleniti consequuntur id!
         </p>
       </article>
       <div className="buttons-container">
@@ -107,7 +141,7 @@ function App() {
             role="button"
           />
         </div>
-        <Button
+        {/* <Button
           className={`${config.isDarkModeOn ? "clear-preferences-button-dark" : "clear-preferences-button-light"} clear-preferences-button`}
           name="clear-preferences"
           label="Clear preferences"
@@ -115,7 +149,7 @@ function App() {
           data-testid="clear-preferences-button"
           aria-label="Clear preferences"
           role="button"
-        />
+        /> */}
       </div>
     </div>
   )
