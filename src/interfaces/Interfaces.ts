@@ -5,5 +5,6 @@ export default interface ButtonProps {
   label?: string;
   name?: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  "data-testid"?: string
+  "data-testid"?: string;
+  role?: string;
 }
