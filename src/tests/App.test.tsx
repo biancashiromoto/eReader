@@ -22,8 +22,8 @@ describe("Screen components:", () => {
     expect(rangeInput).toHaveAttribute("min", utils.validFontSizes.min.toString());
   });
 
-  test("Should contain a button with text 'Clear preferences'", () => {
-    expect(screen.getByRole("button", {name: "Clear preferences"}));
+  test("Should contain a list item with text 'Clear preferences'", () => {
+    expect(screen.getByTestId("clear-preferences")).toBeInTheDocument();
   });
 
   test("Should contain a button with text 'Toggle mode'", () => {
@@ -118,7 +118,7 @@ describe("Clear preferences", () => {
   });
 
   test("Should set configurations to default values when the button is clicked", async () => {
-    const clearPreferencesButton = screen.getByTestId("clear-preferences-button");
+    const clearPreferencesButton = screen.getByTestId("clear-preferences");
     const toggleModeButton = screen.getByTestId("toggle-mode-button");
 
     await userEvent.click(toggleModeButton);
