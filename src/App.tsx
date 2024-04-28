@@ -3,6 +3,8 @@ import "./App.css";
 import Utils from "./utils/Utils";
 import { configType } from "./types/Types";
 import Button from "./components/Button/Button";
+import AppContext from "./context/AppContext";
+import Header from "./components/Header/Header";
 
 function App() {
 
@@ -37,114 +39,70 @@ function App() {
     }
   }
 
-  // Sets preferences to default
-  const clearPreferences = () => {
-    setConfig(utils.defaultConfig);
-  }
-
   return (
-    <div
-    className="reader-screen"
-    data-testid="reader-screen"
+    <AppContext.Provider
+      value={{config, setConfig, isMenuHidden, setIsMenuHidden}}
     >
-      <header data-testid="header">
-        <div className="header-buttons-container">
-          <Button 
-            data-testid="toggle-menu-button"
-            aria-label="Toggle menu"
-            className={`toggle-menu-button`}
-            label="Toggle menu"
-            onClick={() => setIsMenuHidden(prevState => !prevState)}
-          />
-          <Button
-            aria-label="Toggle mode"
-            className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
-            name="toggle-mode"
-            label="Toggle mode"
-            onClick={() => {
-              utils.toggleMode(config.isDarkModeOn);
-              setConfig(prevState => ({
-                    ...prevState,
-                    isDarkModeOn: !prevState.isDarkModeOn
-                  }));
-            }}
-            data-testid="toggle-mode-button"
-            role="button"
-          />
-        </div>
-        <nav
-          data-testid="header-nav-bar"
-          className={isMenuHidden ? "hide" : "show"}
-        >
-          <ul>
-            <li>Font family</li>
-            <li>Font size</li>
-            <li
-              data-testid="clear-preferences"
-              onClick={() => {
-                clearPreferences();
-              }}
-            >
-              Clear preferences
-            </li>
-          </ul>
-        </nav>
-        <h1>E-reader</h1>
-      </header>
-      <article
-        className="text-display"
+      <div
+        className="reader-screen"
+        data-testid="reader-screen"
       >
-        <p
-          style={{fontSize:`${config.fontSize}px`}}
+        <Header />
+        <article
+          className="text-display"
         >
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti culpa error tempore eligendi architecto earum delectus placeat quisquam. Rerum eveniet cum voluptas sapiente sed voluptates animi laborum impedit, quos ab.
-        </p>
-        <p
-          style={{fontSize:`${config.fontSize}px`}}
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium ad sapiente architecto voluptatem quas modi? Magnam officia nisi quis ratione sed! Dolores, quaerat! Atque perferendis voluptas blanditiis! Ab, similique.
-        </p>
-        <p
-          style={{fontSize:`${config.fontSize}px`}}
-        >
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur incidunt officia harum voluptatibus laboriosam consectetur qui itaque optio ut quaerat! Placeat odit sapiente voluptatibus quos, culpa sunt deleniti consequuntur id!
-        </p>
-      </article>
-      <div className="buttons-container">
-        <div className="font-size-buttons">
-          <Button
-            className="decrease-font-size-button font-size-button"
-            name="decrease-font-size"
-            label="-"
-            onClick={() => resizeFont(config.fontSize - 1)}
-            aria-label="Decrease font size"
-            role="button"
-          />
-          <label
-            htmlFor="font-size-range"
-            className="font-size-range"
+          <p
+            style={{fontSize:`${config.fontSize}px`}}
           >
-            {`Font size: ${config.fontSize}px`}
-            <input
-              id="font-size-range"
-              type="range"
-              value={config.fontSize}
-              max={utils.validFontSizes.max}
-              min={utils.validFontSizes.min}
-              onChange={(e) => resizeFont(e.target.valueAsNumber)}
-              aria-label={`Font Size: ${config.fontSize}px`}
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti culpa error tempore eligendi architecto earum delectus placeat quisquam. Rerum eveniet cum voluptas sapiente sed voluptates animi laborum impedit, quos ab.
+          </p>
+          <p
+            style={{fontSize:`${config.fontSize}px`}}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium ad sapiente architecto voluptatem quas modi? Magnam officia nisi quis ratione sed! Dolores, quaerat! Atque perferendis voluptas blanditiis! Ab, similique.
+          </p>
+          <p
+            style={{fontSize:`${config.fontSize}px`}}
+          >
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur incidunt officia harum voluptatibus laboriosam consectetur qui itaque optio ut quaerat! Placeat odit sapiente voluptatibus quos, culpa sunt deleniti consequuntur id!
+          </p>
+        </article>
+        <div className="buttons-container">
+          <div className="font-size-buttons">
+            <Button
+              className="decrease-font-size-button font-size-button"
+              name="decrease-font-size"
+              label="-"
+              onClick={() => resizeFont(config.fontSize - 1)}
+              aria-label="Decrease font size"
+              role="button"
             />
-          </label>
-          <Button
-            className="increase-font-size-button font-size-button"
-            label="+"
-            name="increase-font-size"
-            onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
-            role="button"
-          />
+            <label
+              htmlFor="font-size-range"
+              className="font-size-range"
+            >
+              {`Font size: ${config.fontSize}px`}
+              <input
+                id="font-size-range"
+                type="range"
+                value={config.fontSize}
+                max={utils.validFontSizes.max}
+                min={utils.validFontSizes.min}
+                onChange={(e) => resizeFont(e.target.valueAsNumber)}
+                aria-label={`Font Size: ${config.fontSize}px`}
+              />
+            </label>
+            <Button
+              className="increase-font-size-button font-size-button"
+              label="+"
+              name="increase-font-size"
+              onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
+              role="button"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </AppContext.Provider>
   )
 }
 
