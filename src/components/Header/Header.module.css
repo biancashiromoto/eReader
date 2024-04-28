@@ -1,0 +1,56 @@
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0;
+}
+
+.header-buttons-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.hide {
+  display: none;
+  position: absolute;
+  top: 50%;
+}
+
+.show {
+  display: block;
+}
+
+.toggle-menu-button {
+  padding: 0;
+}
+
+.toggle-menu-button-light::before {
+  content: url("../../assets/images/arrow-light-20.svg");
+}
+
+.toggle-menu-button-dark::before {
+  content: url("../../assets/images/arrow-dark-20.svg");
+}
+
+ul {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 20px 0 20px;
+}
+
+.toggle-mode-button {
+  background-color: unset;
+  padding: 0;
+}
+
+.toggle-mode-button-light::before {
+  content: url("../../assets/images/light-mode.svg");
+}
+
+.toggle-mode-button-dark::before {
+  content: url("../../assets/images/dark-mode.svg");
+}
