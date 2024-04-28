@@ -9,10 +9,14 @@ h1 {
   justify-content: space-between;
 }
 
-.hide {
-  display: none;
+.header-ul {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
   position: absolute;
-  top: 50%;
+  z-index: 1;
 }
 
 .header-navbar-light, .toggle-menu-button-light {
@@ -21,13 +25,6 @@ h1 {
 
 .header-navbar-dark, .toggle-menu-button-dark {
   background-color: #353535;
-}
-
-.show {
-  display: block;
-  position: absolute;
-  padding: 20px;
-  z-index: 1;
 }
 
 .closed-menu-dark {
@@ -54,15 +51,6 @@ h1 {
 
 .toggle-menu-button-dark::before {
   content: url("../../assets/images/arrow-dark-20.svg");
-}
-
-ul {
-  align-items: baseline;
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  margin: 0;
-  padding: 0 20px 0 20px;
 }
 
 .toggle-mode-button {
@@ -92,7 +80,7 @@ ul {
 li {
   align-items: center;
   display: flex;
-  justify-content: center;
+  padding: 0 20px 0 20px;
 }
 
 label {
@@ -104,4 +92,10 @@ label {
 .font-size-control {
   display: flex;
   gap: 10px;
+}
+
+ul {
+  padding: 10px;
+  margin: 0;
+  width: 50vw;
 }
