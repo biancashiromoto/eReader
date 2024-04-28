@@ -13,59 +13,103 @@ const Header = () => {
     setIsMenuHidden
   } = useContext(AppContext);
 
-    // Sets preferences to default
-    const clearPreferences = () => {
-      setConfig(utils.defaultConfig);
+  // Sets preferences to default
+  const clearPreferences = () => {
+    setConfig(utils.defaultConfig);
+  }
+
+  // Resizes the text font to a new size passed as parameter.
+  const resizeFont = (newSize: number) => {
+    if (utils.validateFontSize(newSize)) {
+      setConfig({
+        ...config,
+        fontSize: newSize
+      })
     }
+  }
 
   return (
     <header
       data-testid="header"
     >
-        <div
-          className={style["header-buttons-container"]}
-        >
-          <Button 
-            data-testid="toggle-menu-button"
-            aria-label="Toggle menu"
-            className={`${config.isDarkModeOn ? style["toggle-menu-button-dark"] : style["toggle-menu-button-light"]} ${style["toggle-menu-button"]} ${isMenuHidden ? "" : style["open-menu"]}`}
-            onClick={() => setIsMenuHidden(prevState => !prevState)}
-          />
-          <Button
-            aria-label="Toggle mode"
-            className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
-            name="toggle-mode"
-            label="Toggle mode"
-            onClick={() => {
-              utils.toggleMode(config.isDarkModeOn);
-              setConfig(prevState => ({
-                    ...prevState,
-                    isDarkModeOn: !prevState.isDarkModeOn
-                  }));
-            }}
-            data-testid="toggle-mode-button"
-            role="button"
-          />
-        </div>
-        <nav
-          data-testid="header-nav-bar"
-          className={isMenuHidden ? style["hide"] : style["show"]}
-        >
-          <ul>
-            <li>Font family</li>
-            <li>Font size</li>
-            <li
-              data-testid="clear-preferences"
-              onClick={() => {
-                clearPreferences();
-              }}
+      <div
+        className={style["header-buttons-container"]}
+      >
+        <Button 
+          aria-label="Toggle menu"
+          className={`${config.isDarkModeOn ? style["toggle-menu-button-dark"] : style["toggle-menu-button-light"]} ${style["toggle-menu-button"]} ${isMenuHidden ? "" : style["open-menu"]}`}
+          data-testid="toggle-menu-button"
+          onClick={() => setIsMenuHidden(prevState => !prevState)}
+          role="button"
+        />
+        <Button
+          aria-label="Toggle mode"
+          className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
+          data-testid="toggle-mode-button"
+          label="Toggle mode"
+          name="toggle-mode"
+          onClick={() => {
+            utils.toggleMode(config.isDarkModeOn);
+            setConfig(prevState => ({
+              ...prevState,
+              isDarkModeOn: !prevState.isDarkModeOn
+            }));
+          }}
+          role="button"
+        />
+      </div>
+      <nav
+        data-testid="header-nav-bar"
+        className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-nav-bar"]} ${style["header-nav-bar"]}`}
+      >
+        <ul>
+          <li>Font family</li>
+          <li>
+          <div className="font-size-buttons">
+            <label
+              htmlFor="font-size-range"
+              className={`${style["font-size-range"]}`}
             >
-              Clear preferences
-            </li>
-          </ul>
-        </nav>
-        <h1>E-reader</h1>
-      </header>
+              {`Font size: ${config.fontSize}px`}
+              <Button
+                className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
+                name="decrease-font-size"
+                label="-"
+                onClick={() => resizeFont(config.fontSize - 1)}
+                aria-label="Decrease font size"
+                role="button"
+              />
+              <input
+                id="font-size-range"
+                type="range"
+                value={config.fontSize}
+                max={utils.validFontSizes.max}
+                min={utils.validFontSizes.min}
+                onChange={(e) => resizeFont(e.target.valueAsNumber)}
+                aria-label={`Font Size: ${config.fontSize}px`}
+              />
+            </label>
+            <Button
+              className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
+              label="+"
+              name="increase-font-size"
+              onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
+              role="button"
+            />
+          </div>
+          </li>
+          <li
+            data-testid="clear-preferences"
+            onClick={() => {
+              clearPreferences();
+            }}
+          >
+            Clear preferences
+          </li>
+        </ul>
+      </nav>
+      <h1>E-reader</h1>
+    </header>
   )
 }
 
