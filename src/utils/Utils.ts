@@ -51,14 +51,4 @@ export default class Utils {
     document.body.classList.toggle("light-mode", !isDarkModeOn);
   }
 
-  /**
-   * Toggles the menu.
-   * @param isMenuHidden Boolean indicating wether the nav bar is shown or not
-   */
-  public toggleMenu(isMenuHidden: boolean) {
-    const navBar = document.getElementsByTagName("nav")[0];
-    navBar.classList.toggle("hide", isMenuHidden);
-    navBar.classList.toggle("show", !isMenuHidden);
-  }
-
 }
