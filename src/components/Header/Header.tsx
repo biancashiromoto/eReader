@@ -70,14 +70,14 @@ const Header = () => {
         />
       </div>
       <nav
-        data-testid="header-nav-bar"
+        data-testid="header-navbar"
       >
         {isMenuHidden ? null : (
         <ul
           className={`${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
+          data-testid="header-ul"
         >
           <li
-            // className={`${style["font-size-range"]}`}
             onClick={() => {
               setIsFontSizeControlHidden((prevState) => !prevState);
             }}
