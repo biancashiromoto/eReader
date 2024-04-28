@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Button from '../Button/Button';
 import Utils from '../../utils/Utils';
 import AppContext from '../../context/AppContext';
@@ -12,6 +12,8 @@ const Header = () => {
     isMenuHidden,
     setIsMenuHidden
   } = useContext(AppContext);
+
+  const [isFontSizeControlHidden, setIsFontSizeControlHidden] = useState<boolean>(true);
 
   // Sets preferences to default
   const clearPreferences = () => {
@@ -69,19 +71,20 @@ const Header = () => {
       </div>
       <nav
         data-testid="header-nav-bar"
-        // className={`${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
       >
         {isMenuHidden ? null : (
         <ul
           className={`${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
         >
-          <li>
-          <div className="font-size-buttons">
-            <label
-              htmlFor="font-size-range"
-              className={`${style["font-size-range"]}`}
-            >
-              {`Font size: ${config.fontSize}px`}
+          <li
+            // className={`${style["font-size-range"]}`}
+            onClick={() => {
+              setIsFontSizeControlHidden((prevState) => !prevState);
+            }}
+          >
+            {`Font size: ${config.fontSize}px`}
+            <div className="font-size-buttons">
+            {isFontSizeControlHidden ? null : (
               <div className={`${style["font-size-control"]}`}>
                 <Button
                   className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
@@ -91,24 +94,24 @@ const Header = () => {
                   aria-label="Decrease font size"
                   role="button"
                 />
-                <input
-                  id="font-size-range"
-                  type="range"
-                  value={config.fontSize}
-                  max={utils.validFontSizes.max}
-                  min={utils.validFontSizes.min}
-                  onChange={(e) => resizeFont(e.target.valueAsNumber)}
-                  aria-label={`Font Size: ${config.fontSize}px`}
-                />
-                <Button
-                  className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
-                  label="+"
-                  name="increase-font-size"
-                  onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
-                  role="button"
-                />
+                  <input
+                    id="font-size-range"
+                    type="range"
+                    value={config.fontSize}
+                    max={utils.validFontSizes.max}
+                    min={utils.validFontSizes.min}
+                    onChange={(e) => resizeFont(e.target.valueAsNumber)}
+                    aria-label={`Font Size: ${config.fontSize}px`}
+                  />
+                  <Button
+                    className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
+                    label="+"
+                    name="increase-font-size"
+                    onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
+                    role="button"
+                  />
               </div>
-            </label>
+            )}
           </div>
           </li>
           <li
