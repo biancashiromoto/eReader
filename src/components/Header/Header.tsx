@@ -69,9 +69,12 @@ const Header = () => {
       </div>
       <nav
         data-testid="header-nav-bar"
-        className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
+        // className={`${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
       >
-        <ul>
+        {isMenuHidden ? null : (
+        <ul
+          className={`${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
+        >
           <li>
           <div className="font-size-buttons">
             <label
@@ -117,6 +120,7 @@ const Header = () => {
             Clear preferences
           </li>
         </ul>
+        )}
       </nav>
     </header>
   )
