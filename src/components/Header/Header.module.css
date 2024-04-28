@@ -30,8 +30,12 @@ h1 {
   z-index: 1;
 }
 
-.closed-menu {
+.closed-menu-dark {
   background-color: #242424;
+}
+
+.closed-menu-light {
+  background-color: #efefef;
 }
 
 .open-menu {
