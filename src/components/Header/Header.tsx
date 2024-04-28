@@ -33,7 +33,7 @@ const Header = () => {
       data-testid="header"
     >
       <div
-        className={style["header-buttons-container"]}
+        className={style["header-container"]}
       >
         <Button 
           aria-label="Toggle menu"
@@ -50,6 +50,7 @@ const Header = () => {
           onClick={() => setIsMenuHidden(prevState => !prevState)}
           role="button"
         />
+        <h1>eReader</h1>
         <Button
           aria-label="Toggle mode"
           className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
@@ -117,7 +118,6 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <h1>E-reader</h1>
     </header>
   )
 }
