@@ -5,10 +5,8 @@ h1 {
 }
 
 .header-buttons-container {
-  align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
 }
 
 .hide {
@@ -19,13 +17,20 @@ h1 {
 
 .show {
   display: block;
+  position: absolute;
+  background-color: rgb(56, 56, 56);
+  padding: 20px;
+  z-index: 1;
 }
 
 .open-menu {
+  background-color: rgb(56, 56, 56);
+  width: 50px;
   transform: rotate(180deg);
 }
 
 .toggle-menu-button {
+  border-radius: 0;
   padding: 10px;
   transition: 200ms;
 }
@@ -49,7 +54,6 @@ ul {
 
 .toggle-mode-button {
   background-color: unset;
-  padding: 0;
 }
 
 .toggle-mode-button-light::before {
@@ -68,7 +72,7 @@ ul {
 }
 
 .font-size-button {
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 0;
 }
 
