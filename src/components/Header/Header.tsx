@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import Button from '../Button/Button';
 import Utils from '../../utils/Utils';
 import AppContext from '../../context/AppContext';
+import style from "./Header.module.css";
 
 const Header = () => {
   const utils = new Utils();
@@ -18,18 +19,21 @@ const Header = () => {
     }
 
   return (
-    <header data-testid="header">
-        <div className="header-buttons-container">
+    <header
+      data-testid="header"
+    >
+        <div
+          className={style["header-buttons-container"]}
+        >
           <Button 
             data-testid="toggle-menu-button"
             aria-label="Toggle menu"
-            className={`toggle-menu-button`}
-            label="Toggle menu"
+            className={`${config.isDarkModeOn ? style["toggle-menu-button-dark"] : style["toggle-menu-button-light"]}`}
             onClick={() => setIsMenuHidden(prevState => !prevState)}
           />
           <Button
             aria-label="Toggle mode"
-            className={`${config.isDarkModeOn ? "toggle-mode-button-dark" : "toggle-mode-button-light"} toggle-mode-button`}
+            className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
             name="toggle-mode"
             label="Toggle mode"
             onClick={() => {
@@ -45,7 +49,7 @@ const Header = () => {
         </div>
         <nav
           data-testid="header-nav-bar"
-          className={isMenuHidden ? "hide" : "show"}
+          className={isMenuHidden ? style["hide"] : style["show"]}
         >
           <ul>
             <li>Font family</li>
