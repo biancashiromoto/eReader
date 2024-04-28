@@ -28,7 +28,7 @@ const Header = () => {
           <Button 
             data-testid="toggle-menu-button"
             aria-label="Toggle menu"
-            className={`${config.isDarkModeOn ? style["toggle-menu-button-dark"] : style["toggle-menu-button-light"]}`}
+            className={`${config.isDarkModeOn ? style["toggle-menu-button-dark"] : style["toggle-menu-button-light"]} ${style["toggle-menu-button"]} ${isMenuHidden ? "" : style["open-menu"]}`}
             onClick={() => setIsMenuHidden(prevState => !prevState)}
           />
           <Button
