@@ -21,8 +21,12 @@ h1 {
   display: block;
 }
 
+.open-menu {
+  transform: rotate(180deg);
+}
+
 .toggle-menu-button {
-  padding: 0;
+  padding: 10px;
 }
 
 .toggle-menu-button-light::before {
