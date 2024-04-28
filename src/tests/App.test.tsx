@@ -27,7 +27,11 @@ describe("Screen components:", () => {
   });
 
   test("Should contain a button with text 'Toggle mode'", () => {
-    expect(screen.getByTestId("toggle-mode-button"));
+    expect(screen.getByTestId("toggle-mode-button")).toBeInTheDocument();
+  });
+
+  test("Should contain a header tag", () => {
+    expect(screen.getByTestId("header")).toBeInTheDocument();
   });
 })
 
@@ -95,7 +99,7 @@ describe("Font size management:", () => {
   });
 });
 
-describe("Toggle between dark and light modes", () => {
+describe("Toggle between dark and light modes:", () => {
   beforeEach(() => {
     render(<App />);
   });
@@ -110,9 +114,9 @@ describe("Toggle between dark and light modes", () => {
     expect(document.body.classList.contains("dark-mode")).toBe(false);
     expect(document.body.classList.contains("light-mode")).toBe(true);
   });
-})
+});
 
-describe("Clear preferences", () => {
+describe("Clear preferences:", () => {
   beforeEach(() => {
     render(<App />);
   });
@@ -129,5 +133,24 @@ describe("Clear preferences", () => {
     await userEvent.click(clearPreferencesButton);
     expect(rangeInput.getAttribute("value")).toBe(utils.defaultConfig.fontSize.toString());
     expect(document.body.classList.contains("dark-mode")).toBe(true);
+  })
+});
+
+describe("Header:", () => {
+  beforeEach(() => {
+    render(<App />);
+  });
+
+  test("Should display an undordered list when clicked and hide it when clicked again", async () => {
+    const headerButton = screen.getByTestId("toggle-menu-button");
+    const navBar = screen.getByTestId("header-nav-bar")
+
+    await userEvent.click(headerButton);
+    expect(navBar.classList.contains("show")).toBe(true);
+    expect(navBar.classList.contains("hide")).toBe(false);
+
+    await userEvent.click(headerButton);
+    expect(navBar.classList.contains("hide")).toBe(true);
+    expect(navBar.classList.contains("show")).toBe(false);
   })
 })
