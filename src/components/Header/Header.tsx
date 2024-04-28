@@ -43,7 +43,7 @@ const Header = () => {
             style["toggle-menu-button-light"]} ${style["toggle-menu-button"]
             } 
             ${
-              isMenuHidden ? style["closed-menu"] : style["open-menu"]
+              isMenuHidden ? (config.isDarkModeOn ? style["closed-menu-dark"] : style["closed-menu-light"]) : style["open-menu"]
             }
             `}
           data-testid="toggle-menu-button"
