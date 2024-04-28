@@ -18,6 +18,7 @@ function App() {
     }
   });
 
+  // State hook to manage the menu's visibility
   const [isMenuHidden, setIsMenuHidden] = useState<boolean>(true);
 
   // Effect hook to toggle dark mode and save preferences when configurations are changed
@@ -46,16 +47,14 @@ function App() {
     className="reader-screen"
     data-testid="reader-screen"
     >
-      <header>
+      <header data-testid="header">
         <div className="header-buttons-container">
           <Button 
+            data-testid="toggle-menu-button"
             aria-label="Toggle menu"
             className={`toggle-menu-button`}
             label="Toggle menu"
-            onClick={() => {
-              utils.toggleMenu(isMenuHidden);
-              setIsMenuHidden(prevState => !prevState)
-            }}
+            onClick={() => setIsMenuHidden(prevState => !prevState)}
           />
           <Button
             aria-label="Toggle mode"
@@ -73,7 +72,10 @@ function App() {
             role="button"
           />
         </div>
-        <nav>
+        <nav
+          data-testid="header-nav-bar"
+          className={isMenuHidden ? "hide" : "show"}
+        >
           <ul>
             <li>Font family</li>
             <li>Font size</li>
@@ -141,15 +143,6 @@ function App() {
             role="button"
           />
         </div>
-        {/* <Button
-          className={`${config.isDarkModeOn ? "clear-preferences-button-dark" : "clear-preferences-button-light"} clear-preferences-button`}
-          name="clear-preferences"
-          label="Clear preferences"
-          onClick={() => clearPreferences()}
-          data-testid="clear-preferences-button"
-          aria-label="Clear preferences"
-          role="button"
-        /> */}
       </div>
     </div>
   )
