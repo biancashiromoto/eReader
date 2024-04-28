@@ -60,11 +60,6 @@ ul {
   content: url("../../assets/images/dark-mode.svg");
 }
 
-.font-size-range {
-  display: flex;
-  gap: 25px;
-}
-
 .font-size-buttons {
   align-items: center;
   display: flex;
@@ -81,4 +76,15 @@ li {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+label {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+}
+
+.font-size-control {
+  display: flex;
+  gap: 10px;
 }
