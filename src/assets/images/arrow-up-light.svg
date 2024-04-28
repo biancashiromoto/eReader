@@ -1,9 +1,0 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="35" height="35">
-	<title>arrow-up-light</title>
-	<defs>
-		<image  width="34" height="48" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAwCAMAAABDh1hgAAAAAXNSR0IB2cksfwAAAKhQTFRFAAAADAwMMzMzJiYmMzMzMzMzMzMzJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmMzMzJiYmJiYmJiYmJiYmJiYmJiYmJiYmMzMzJiYmJiYmGRkZMzMzMzMzMzMzMzMzMzMzMzMzGRkZMzMzGRkZMzMzMzMzMzMzMzMzMzMzMzMzMzMzJiYmGRkZGRkZGRkZDAwMGRkZDAwMGRkZDAwMGRkZGRkZWb/pdQAAADh0Uk5TAACRbI7//mmMiWeHZYN9ZHf9YnZ0XnBrW/xaWDC+v+LMn5wai3mJiIaFhIKBf359ew8gLmAtTEu4jMvEAAABBUlEQVR4nM3QyWvCQBQG8DwjVWksohIP9tCDVFt3hP7/1+LBk11cKh4sgtAQiUtCQxwTU2dJ8hR78LsM882PmceAxAYAbL7itjIxZiRJ2vuLzAiS+nW7+DqU3FqH8sYIIentX0sbitxtqDqlB5DMin5TgR+B5JbM4JTxSV6XuCjxBUNUjRdH4xFZdkTiG5cUtCBBTGJ+IAknWJAJnblLFCtMEAPfhGSNcEFMbAb34I5DNJ+idwD+v5SmAnkYeqtPHicoKX+hpDJGydMIJc9DlFQHKKl9oqT+gZLGO0qabyhp9VHSBoE4PZZE5AzSES10WXLCuNdEXhYCUV9ZEpH/Jdf0L5eRHcIQV1SV6nTzAAAAAElFTkSuQmCC"/>
-	</defs>
-	<style>
-	</style>
-	<use id="Background" href="#img1" x="8" y="1"/>
-</svg>
