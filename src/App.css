@@ -52,33 +52,6 @@ button {
   gap: 15px;
 }
 
-.toggle-mode-button {
-  background-color: unset;
-  padding: 0;
-}
-
-.toggle-mode-button-light::before {
-  content: url("./assets/images/light-mode.svg");
-}
-
-.toggle-mode-button-dark::before {
-  content: url("./assets/images/dark-mode.svg");
-}
-
-.clear-preferences-button {
-  background-color: unset;
-  border: solid 1px black;
-  font-size: .75rem;
-}
-
-.clear-preferences-button-light::before {
-  content: url("./assets/images/clear-light.svg");
-}
-
-.clear-preferences-button-dark::before {
-  content: url("./assets/images/clear-dark.svg");
-}
-
 .font-size-button {
   font-size: 2rem;
   padding: 0;
