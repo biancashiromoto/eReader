@@ -27,6 +27,7 @@ h1 {
 
 .toggle-menu-button {
   padding: 10px;
+  transition: 200ms;
 }
 
 .toggle-menu-button-light::before {
@@ -57,4 +58,27 @@ ul {
 
 .toggle-mode-button-dark::before {
   content: url("../../assets/images/dark-mode.svg");
+}
+
+.font-size-range {
+  display: flex;
+  gap: 25px;
+}
+
+.font-size-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.font-size-button {
+  font-size: 1rem;
+  padding: 0;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
