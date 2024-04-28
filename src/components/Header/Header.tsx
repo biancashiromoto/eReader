@@ -37,7 +37,15 @@ const Header = () => {
       >
         <Button 
           aria-label="Toggle menu"
-          className={`${config.isDarkModeOn ? style["toggle-menu-button-dark"] : style["toggle-menu-button-light"]} ${style["toggle-menu-button"]} ${isMenuHidden ? "" : style["open-menu"]}`}
+          className={`${
+            config.isDarkModeOn ? 
+            style["toggle-menu-button-dark"] : 
+            style["toggle-menu-button-light"]} ${style["toggle-menu-button"]
+            } 
+            ${
+              isMenuHidden ? style["closed-menu"] : style["open-menu"]
+            }
+            `}
           data-testid="toggle-menu-button"
           onClick={() => setIsMenuHidden(prevState => !prevState)}
           role="button"
@@ -60,7 +68,7 @@ const Header = () => {
       </div>
       <nav
         data-testid="header-nav-bar"
-        className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-nav-bar"]} ${style["header-nav-bar"]}`}
+        className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-nav-bar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
       >
         <ul>
           <li>
