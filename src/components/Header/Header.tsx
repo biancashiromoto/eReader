@@ -63,7 +63,6 @@ const Header = () => {
         className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-nav-bar"]} ${style["header-nav-bar"]}`}
       >
         <ul>
-          <li>Font family</li>
           <li>
           <div className="font-size-buttons">
             <label
@@ -71,7 +70,7 @@ const Header = () => {
               className={`${style["font-size-range"]}`}
             >
               {`Font size: ${config.fontSize}px`}
-              <div className={`${style["font-size-control"]} `}>
+              <div className={`${style["font-size-control"]}`}>
                 <Button
                   className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
                   name="decrease-font-size"
