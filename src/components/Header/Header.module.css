@@ -39,7 +39,6 @@ h1 {
 }
 
 .open-menu {
-  width: 50px;
   transform: rotate(180deg);
 }
 
