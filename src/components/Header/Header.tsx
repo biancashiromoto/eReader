@@ -71,31 +71,33 @@ const Header = () => {
               className={`${style["font-size-range"]}`}
             >
               {`Font size: ${config.fontSize}px`}
-              <Button
-                className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
-                name="decrease-font-size"
-                label="-"
-                onClick={() => resizeFont(config.fontSize - 1)}
-                aria-label="Decrease font size"
-                role="button"
-              />
-              <input
-                id="font-size-range"
-                type="range"
-                value={config.fontSize}
-                max={utils.validFontSizes.max}
-                min={utils.validFontSizes.min}
-                onChange={(e) => resizeFont(e.target.valueAsNumber)}
-                aria-label={`Font Size: ${config.fontSize}px`}
-              />
+              <div className={`${style["font-size-control"]} `}>
+                <Button
+                  className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
+                  name="decrease-font-size"
+                  label="-"
+                  onClick={() => resizeFont(config.fontSize - 1)}
+                  aria-label="Decrease font size"
+                  role="button"
+                />
+                <input
+                  id="font-size-range"
+                  type="range"
+                  value={config.fontSize}
+                  max={utils.validFontSizes.max}
+                  min={utils.validFontSizes.min}
+                  onChange={(e) => resizeFont(e.target.valueAsNumber)}
+                  aria-label={`Font Size: ${config.fontSize}px`}
+                />
+                <Button
+                  className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
+                  label="+"
+                  name="increase-font-size"
+                  onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
+                  role="button"
+                />
+              </div>
             </label>
-            <Button
-              className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
-              label="+"
-              name="increase-font-size"
-              onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
-              role="button"
-            />
           </div>
           </li>
           <li
