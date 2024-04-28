@@ -15,16 +15,26 @@ h1 {
   top: 50%;
 }
 
+.header-navbar-light, .toggle-menu-button-light {
+  background-color: #b9b9b9;
+}
+
+.header-navbar-dark, .toggle-menu-button-dark {
+  background-color: #353535;
+}
+
 .show {
   display: block;
   position: absolute;
-  background-color: rgb(56, 56, 56);
   padding: 20px;
   z-index: 1;
 }
 
+.closed-menu {
+  background-color: #242424;
+}
+
 .open-menu {
-  background-color: rgb(56, 56, 56);
   width: 50px;
   transform: rotate(180deg);
 }
