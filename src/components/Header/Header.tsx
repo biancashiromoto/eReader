@@ -69,7 +69,7 @@ const Header = () => {
       </div>
       <nav
         data-testid="header-nav-bar"
-        className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-nav-bar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
+        className={`${isMenuHidden ? style["hide"] : style["show"]} ${style["header-navbar"]} ${config.isDarkModeOn ? style["header-navbar-dark"] : style["header-navbar-light"]}`}
       >
         <ul>
           <li>
