@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Utils from "./utils/Utils";
+import Utils from "./helpers/Utils";
 import { configType } from "./types/Types";
 import AppContext from "./context/AppContext";
 import Header from "./components/Header/Header";
