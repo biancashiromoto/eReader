@@ -20,19 +20,19 @@ h1 {
 }
 
 .header-navbar-light, .toggle-menu-button-light {
-  background-color: #b9b9b9;
+  background-color: var(--light-gray);
 }
 
 .header-navbar-dark, .toggle-menu-button-dark {
-  background-color: #353535;
+  background-color: var(--dark-gray);
 }
 
 .closed-menu-dark, .header-dark {
-  background-color: #242424;
+  background-color: var(--black);
 }
 
 .closed-menu-light, .header-light {
-  background-color: #efefef;
+  background-color: var(--white);
 }
 
 .open-menu {
@@ -51,10 +51,6 @@ h1 {
 
 .toggle-menu-button-dark::before {
   content: url("../../assets/images/arrow-dark-20.svg");
-}
-
-.toggle-mode-button {
-  background-color: unset;
 }
 
 .toggle-mode-button-light::before {

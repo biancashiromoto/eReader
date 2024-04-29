@@ -1,11 +1,11 @@
 .dark-mode {
-  background-color: #242424;
-  color: #efefef;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .light-mode {
-  background-color: #efefef;
-  color: #242424;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 #root {
@@ -18,18 +18,6 @@
   margin: auto 50px;
   position: relative;
   overflow-y: scroll;
-}
-
-.buttons-container {
-  background-color: darkgray;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  height: max-content;
-  justify-content: center;
-  position: fixed;
-  width: 100%;
 }
 
 button {
