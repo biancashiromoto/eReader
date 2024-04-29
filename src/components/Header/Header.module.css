@@ -27,11 +27,11 @@ h1 {
   background-color: #353535;
 }
 
-.closed-menu-dark {
+.closed-menu-dark, .header-dark {
   background-color: #242424;
 }
 
-.closed-menu-light {
+.closed-menu-light, .header-light {
   background-color: #efefef;
 }
 
