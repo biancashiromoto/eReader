@@ -1,7 +1,7 @@
 import { render, screen} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
-import Styles from "../utils/Styles";
+import Styles from "../helpers/Styles";
 
 const styles = new Styles();
 const { max } = styles.fontSizes;

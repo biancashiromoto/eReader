@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import Button from '../Button/Button';
-import Utils from '../../utils/Utils';
+import Utils from '../../helpers/Utils';
 import AppContext from '../../context/AppContext';
 import style from "./Header.module.css";
-import Styles from '../../utils/Styles';
+import Styles from '../../helpers/Styles';
 
 const Header = () => {
   const utils = new Utils();
