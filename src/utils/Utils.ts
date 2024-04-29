@@ -1,26 +1,16 @@
-import { configType, validFontSizes } from "../types/Types";
+import { configType } from "../types/Types";
+import Styles from "./Styles";
 
 export default class Utils {
-
-  // Default configuration for preferences
-  public defaultConfig: configType = {
-    fontSize: 18,
-    isDarkModeOn: true
-  }
-
-  // Valid font sizes
-  public validFontSizes: validFontSizes = {
-    max: 40,
-    min: 12
-  }
-
+  private _styles = new Styles();
+  
   /**
    *  Validates the new font size.
    * @param newSize Number indicating the new font size in pixels
    * @returns Boolean representing wether the new size is between tha maximum and minimum values allowed 
    */
   public  validateFontSize(newSize: number) {
-    return newSize <= this.validFontSizes.max && newSize >= this.validFontSizes.min
+    return newSize <= this._styles.fontSizes.max && newSize >= this._styles.fontSizes.min
   }
 
   /**
@@ -39,7 +29,11 @@ export default class Utils {
    */
   public loadPreferences(): configType {
     const preferences = localStorage.getItem("config");
-    return preferences ? JSON.parse(preferences) : {fontSize: 18, isDarkModeOn: true};
+    const { fontSize, isDarkModeOn } = this._styles.defaultConfig;
+    return preferences ? JSON.parse(preferences) : {
+      fontSize,
+      isDarkModeOn
+    }
   }
 
   /**
@@ -50,5 +44,4 @@ export default class Utils {
     document.body.classList.toggle("dark-mode", isDarkModeOn);
     document.body.classList.toggle("light-mode", !isDarkModeOn);
   }
-
 }
