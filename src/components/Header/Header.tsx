@@ -3,9 +3,13 @@ import Button from '../Button/Button';
 import Utils from '../../utils/Utils';
 import AppContext from '../../context/AppContext';
 import style from "./Header.module.css";
+import Styles from '../../utils/Styles';
 
 const Header = () => {
   const utils = new Utils();
+  const styles = new Styles();
+  const { max, min } = styles.fontSizes;
+
   const {
     config,
     setConfig,
@@ -17,7 +21,7 @@ const Header = () => {
 
   // Sets preferences to default
   const clearPreferences = () => {
-    setConfig(utils.defaultConfig);
+    setConfig(styles.defaultConfig);
   }
 
   // Resizes the text font to a new size passed as parameter.
@@ -33,6 +37,7 @@ const Header = () => {
   return (
     <header
       data-testid="header"
+      className={`${config.isDarkModeOn ? style["header-dark"] : style["header-light"]}`}
     >
       <div
         className={style["header-container"]}
@@ -58,7 +63,7 @@ const Header = () => {
           className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
           data-testid="toggle-mode-button"
           label="Toggle mode"
-          name="toggle-mode"
+          name="toggle-mode-button"
           onClick={() => {
             utils.toggleMode(config.isDarkModeOn);
             setConfig(prevState => ({
@@ -78,16 +83,21 @@ const Header = () => {
           data-testid="header-ul"
         >
           <li
+            data-testid="font-size-control"
             onClick={() => {
               setIsFontSizeControlHidden((prevState) => !prevState);
             }}
           >
             {`Font size: ${config.fontSize}px`}
-            <div className="font-size-buttons">
+            <div
+              className="font-size-buttons"
+              data-testid="font-size-control_buttons"
+            >
             {isFontSizeControlHidden ? null : (
               <div className={`${style["font-size-control"]}`}>
                 <Button
                   className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
+                  data-testid="decrease-font-size-button"
                   name="decrease-font-size"
                   label="-"
                   onClick={() => resizeFont(config.fontSize - 1)}
@@ -98,13 +108,14 @@ const Header = () => {
                     id="font-size-range"
                     type="range"
                     value={config.fontSize}
-                    max={utils.validFontSizes.max}
-                    min={utils.validFontSizes.min}
+                    max={max}
+                    min={min}
                     onChange={(e) => resizeFont(e.target.valueAsNumber)}
                     aria-label={`Font Size: ${config.fontSize}px`}
                   />
                   <Button
                     className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
+                    data-testid="increase-font-size-button"
                     label="+"
                     name="increase-font-size"
                     onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
