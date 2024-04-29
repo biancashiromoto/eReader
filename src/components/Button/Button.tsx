@@ -9,7 +9,7 @@ const Button: React.FC<ButtonProps> = ({name, onClick, label, className, "data-t
       type="button"
       data-testid={testId}
     >
-      {label === "Toggle mode" ? "" : label}
+      {label}
     </button>
   )
 }
