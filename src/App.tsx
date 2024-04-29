@@ -4,6 +4,7 @@ import Utils from "./helpers/Utils";
 import { configType } from "./types/Types";
 import AppContext from "./context/AppContext";
 import Header from "./components/Header/Header";
+import { text } from "./helpers/text";
 
 function App() {
 
@@ -40,21 +41,14 @@ function App() {
         <article
           className="text-display"
         >
-          <p
-            style={{fontSize:`${config.fontSize}px`}}
-          >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti culpa error tempore eligendi architecto earum delectus placeat quisquam. Rerum eveniet cum voluptas sapiente sed voluptates animi laborum impedit, quos ab.
-          </p>
-          <p
-            style={{fontSize:`${config.fontSize}px`}}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium ad sapiente architecto voluptatem quas modi? Magnam officia nisi quis ratione sed! Dolores, quaerat! Atque perferendis voluptas blanditiis! Ab, similique.
-          </p>
-          <p
-            style={{fontSize:`${config.fontSize}px`}}
-          >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur incidunt officia harum voluptatibus laboriosam consectetur qui itaque optio ut quaerat! Placeat odit sapiente voluptatibus quos, culpa sunt deleniti consequuntur id!
-          </p>
+          {text.map((paragraph, index) => (
+            <p
+              key={index}
+              style={{fontSize: `${config.fontSize}px`}}
+            >
+              {paragraph}
+            </p>
+          ))}
         </article>
       </div>
     </AppContext.Provider>
