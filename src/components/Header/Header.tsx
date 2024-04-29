@@ -54,6 +54,7 @@ const Header = () => {
             }
             `}
           data-testid="toggle-menu-button"
+          name="toggle-menu-button"
           onClick={() => setIsMenuHidden(prevState => !prevState)}
           role="button"
         />
