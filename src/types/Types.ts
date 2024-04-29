@@ -3,7 +3,7 @@ export type configType = {
   isDarkModeOn: boolean
 }
 
-export type validFontSizes = {
+export type validFontSizesType = {
   max: number,
   min: number
 }
