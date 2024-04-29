@@ -42,7 +42,7 @@ const Header = () => {
       <div
         className={style["header-container"]}
       >
-        <Button 
+        <span
           aria-label="Toggle menu"
           className={`${
             config.isDarkModeOn ? 
@@ -54,16 +54,15 @@ const Header = () => {
             }
             `}
           data-testid="toggle-menu-button"
-          name="toggle-menu-button"
           onClick={() => setIsMenuHidden(prevState => !prevState)}
-          role="button"
+          onMouseOver={() => setIsMenuHidden(false)}
+          onMouseLeave={() => setIsMenuHidden(true)}
         />
         <h1>eReader</h1>
         <Button
           aria-label="Toggle mode"
           className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
           data-testid="toggle-mode-button"
-          label="Toggle mode"
           name="toggle-mode-button"
           onClick={() => {
             utils.toggleMode(config.isDarkModeOn);
@@ -77,6 +76,8 @@ const Header = () => {
       </div>
       <nav
         data-testid="header-navbar"
+        onMouseOver={() => setIsMenuHidden(false)}
+        onMouseLeave={() => setIsMenuHidden(true)}
       >
         {isMenuHidden ? null : (
         <ul
@@ -84,10 +85,17 @@ const Header = () => {
           data-testid="header-ul"
         >
           <li
-            data-testid="font-size-control"
+            data-testid="clear-preferences"
             onClick={() => {
-              setIsFontSizeControlHidden((prevState) => !prevState);
+              clearPreferences();
             }}
+          >
+            Clear preferences
+          </li>
+          <li
+            data-testid="font-size-control"
+            onMouseOver={() => setIsFontSizeControlHidden(false)}
+            onMouseLeave={() => setIsFontSizeControlHidden(true)}
           >
             {`Font size: ${config.fontSize}px`}
             <div
@@ -100,39 +108,30 @@ const Header = () => {
                   className={`${style["decrease-font-size-button"]} ${style["font-size-button"]}`}
                   data-testid="decrease-font-size-button"
                   name="decrease-font-size"
-                  label="-"
                   onClick={() => resizeFont(config.fontSize - 1)}
                   aria-label="Decrease font size"
-                  role="button"
+                  label="-"
                 />
-                  <input
-                    id="font-size-range"
-                    type="range"
-                    value={config.fontSize}
-                    max={max}
-                    min={min}
-                    onChange={(e) => resizeFont(e.target.valueAsNumber)}
-                    aria-label={`Font Size: ${config.fontSize}px`}
-                  />
-                  <Button
-                    className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
-                    data-testid="increase-font-size-button"
-                    label="+"
-                    name="increase-font-size"
-                    onClick={() => resizeFont(config.fontSize + 1)}aria-label="Increase font size"
-                    role="button"
-                  />
+                <input
+                  id="font-size-range"
+                  type="range"
+                  value={config.fontSize}
+                  max={max}
+                  min={min}
+                  onChange={(e) => resizeFont(e.target.valueAsNumber)}
+                  aria-label={`Font Size: ${config.fontSize}px`}
+                />
+                <Button
+                  className={`${style["increase-font-size-button"]} ${style["font-size-button"]}`}
+                  data-testid="increase-font-size-button"
+                  name="increase-font-size"
+                  onClick={() => resizeFont(config.fontSize + 1)}
+                  aria-label="Increase font size"
+                  label="+"
+                />
               </div>
             )}
           </div>
-          </li>
-          <li
-            data-testid="clear-preferences"
-            onClick={() => {
-              clearPreferences();
-            }}
-          >
-            Clear preferences
           </li>
         </ul>
         )}
