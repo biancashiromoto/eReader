@@ -1,35 +1,17 @@
 .dark-mode {
-  background-color: #242424;
-  color: #efefef;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .light-mode {
-  background-color: #efefef;
-  color: #242424;
-}
-
-#root {
-  margin: 0 auto;
-  text-align: center;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .text-display {
   text-align: justify;
   margin: auto 50px;
-  position: relative;
   overflow-y: scroll;
-}
-
-.buttons-container {
-  background-color: darkgray;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  height: max-content;
-  justify-content: center;
-  position: fixed;
-  width: 100%;
 }
 
 button {
@@ -37,33 +19,10 @@ button {
   background-color: unset;
   color: inherit;
   display: flex;
-  gap: 5px;
-  justify-content: center;
   width: max-content;
 }
 
 .font-size-buttons {
-  align-items: center;
   display: flex;
   justify-content: center;
-  gap: 15px;
-}
-
-.font-size-button {
-  font-size: 2rem;
-  padding: 0;
-}
-
-.font-size-range {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  max-width: 60vw;
-}
-
-.header-buttons-container {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
 }
