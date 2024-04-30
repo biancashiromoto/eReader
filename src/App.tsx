@@ -20,9 +20,6 @@ function App() {
     }
   });
 
-  // State hook to manage the menu's visibility
-  const [isMenuHidden, setIsMenuHidden] = useState<boolean>(true);
-
   // Effect hook to toggle dark mode and save preferences when configurations are changed
   useEffect(() => {
     utils.toggleMode(config.isDarkModeOn);
@@ -31,7 +28,10 @@ function App() {
 
   return (
     <AppContext.Provider
-      value={{config, setConfig, isMenuHidden, setIsMenuHidden}}
+      value={{
+        config,
+        setConfig,
+      }}
     >
       <div
         className="reader-screen"
