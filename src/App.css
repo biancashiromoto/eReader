@@ -12,14 +12,8 @@
   text-align: justify;
   margin: auto 50px;
   overflow-y: scroll;
-}
-
-button {
-  align-items: center;
-  background-color: unset;
-  color: inherit;
-  display: flex;
-  width: max-content;
+  position: relative;
+  padding-top: 10px;
 }
 
 .font-size-buttons {
