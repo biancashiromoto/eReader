@@ -9,7 +9,7 @@ export default class Utils {
    * @param newSize Number indicating the new font size in pixels
    * @returns Boolean representing wether the new size is between tha maximum and minimum values allowed 
    */
-  public  validateFontSize(newSize: number) {
+  public  validateFontSize(newSize: number): boolean {
     return newSize <= this._styles.fontSizes.max && newSize >= this._styles.fontSizes.min
   }
 
@@ -40,7 +40,7 @@ export default class Utils {
    * Toggles dark mode on or off.
    * @param isDarkModeOn Boolean indicating wether dark mode is enabled or not.
    */
-  public toggleMode(isDarkModeOn: configType["isDarkModeOn"]) {
+  public toggleMode(isDarkModeOn: configType["isDarkModeOn"]): void {
     document.body.classList.toggle("dark-mode", isDarkModeOn);
     document.body.classList.toggle("light-mode", !isDarkModeOn);
   }

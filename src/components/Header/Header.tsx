@@ -13,19 +13,21 @@ const Header = () => {
   const {
     config,
     setConfig,
-    isMenuHidden,
-    setIsMenuHidden
   } = useContext(AppContext);
 
+  // State hook to manage the menu's visibility
+  const [isMenuHidden, setIsMenuHidden] = useState<boolean>(true);
+
+  // State hook to manage the font size management's visibility
   const [isFontSizeControlHidden, setIsFontSizeControlHidden] = useState<boolean>(true);
 
   // Sets preferences to default
-  const clearPreferences = () => {
+  const clearPreferences = (): void => {
     setConfig(styles.defaultConfig);
   }
 
   // Resizes the text font to a new size passed as parameter.
-  const resizeFont = (newSize: number) => {
+  const resizeFont = (newSize: number): void => {
     if (utils.validateFontSize(newSize)) {
       setConfig({
         ...config,
