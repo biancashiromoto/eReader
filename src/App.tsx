@@ -4,12 +4,12 @@ import Utils from "./helpers/Utils";
 import { configType } from "./types/Types";
 import AppContext from "./context/AppContext";
 import Header from "./components/Header/Header";
-import { text } from "./helpers/text";
+import Display from "./components/Display/Display";
 
 function App() {
 
   // Instance of class Utils to handle preferences changes
-  const utils = new Utils();
+  const utils: Utils = new Utils();
 
   // State hook to manage configuration settings
   const [config, setConfig] = useState<configType>(() => {
@@ -24,33 +24,14 @@ function App() {
   useEffect(() => {
     utils.toggleMode(config.isDarkModeOn);
     utils.savePreferences(config);
-  }, [config])
+  }, [config]);
 
   return (
     <AppContext.Provider
-      value={{
-        config,
-        setConfig,
-      }}
+      value={{config, setConfig}}
     >
-      <div
-        className="reader-screen"
-        data-testid="reader-screen"
-      >
         <Header />
-        <article
-          className="text-display"
-        >
-          {text.map((paragraph, index) => (
-            <p
-              key={index}
-              style={{fontSize: `${config.fontSize}px`}}
-            >
-              {paragraph}
-            </p>
-          ))}
-        </article>
-      </div>
+        <Display />
     </AppContext.Provider>
   )
 }
