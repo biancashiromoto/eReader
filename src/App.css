@@ -12,8 +12,8 @@
   text-align: justify;
   margin: auto 50px;
   overflow-y: scroll;
-  position: relative;
-  padding-top: 10px;
+  position: absolute;
+  padding-top: 3.5em;
 }
 
 .font-size-buttons {
