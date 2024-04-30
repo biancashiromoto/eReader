@@ -8,15 +8,9 @@
   color: var(--black);
 }
 
-#root {
-  margin: 0 auto;
-  text-align: center;
-}
-
 .text-display {
   text-align: justify;
   margin: auto 50px;
-  position: relative;
   overflow-y: scroll;
 }
 
@@ -25,33 +19,10 @@ button {
   background-color: unset;
   color: inherit;
   display: flex;
-  gap: 5px;
-  justify-content: center;
   width: max-content;
 }
 
 .font-size-buttons {
-  align-items: center;
   display: flex;
   justify-content: center;
-  gap: 15px;
-}
-
-.font-size-button {
-  font-size: 2rem;
-  padding: 0;
-}
-
-.font-size-range {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  max-width: 60vw;
-}
-
-.header-buttons-container {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
 }
