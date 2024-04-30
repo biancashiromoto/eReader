@@ -59,20 +59,24 @@ const Header = () => {
           onMouseLeave={() => setIsMenuHidden(true)}
         />
         <h1>eReader</h1>
-        <Button
-          aria-label="Toggle mode"
-          className={`${config.isDarkModeOn ? style["toggle-mode-button-dark"] : style["toggle-mode-button-light"]} toggle-mode-button`}
-          data-testid="toggle-mode-button"
-          name="toggle-mode-button"
-          onClick={() => {
-            utils.toggleMode(config.isDarkModeOn);
-            setConfig(prevState => ({
+        <label
+          className={`${config.isDarkModeOn ? style["toggle-mode-label-dark"] : style["toggle-mode-label-light"]} ${style["toggle-mode-label"]}`}
+        >
+          <input
+            type="checkbox"
+            title="toggle-mode-button"
+            aria-label="Toggle mode"
+            className={style["toggle-mode-button"]}
+            data-testid="toggle-mode-button"
+            name="toggle-mode-button"
+            checked={config.isDarkModeOn}
+            onChange={() => setConfig(prevState => ({
               ...prevState,
-              isDarkModeOn: !prevState.isDarkModeOn
-            }));
-          }}
-          role="button"
-        />
+              isDarkModeOn: !prevState.isDarkModeOn          
+            }))}
+          >
+          </input>
+        </label>
       </div>
       <nav
         data-testid="header-navbar"
