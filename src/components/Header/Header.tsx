@@ -94,7 +94,13 @@ const Header = () => {
               clearPreferences();
             }}
           >
-            Clear preferences
+            <Button
+              name="clear-preferences-button"
+              onClick={() => clearPreferences()}
+              className={style["clear-preferences-button"]}
+              data-testid="clear-preferences-button"
+              label="Clear preferences"
+            />
           </li>
           <li
             data-testid="font-size-control"
