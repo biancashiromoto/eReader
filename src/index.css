@@ -23,7 +23,10 @@ body {
 }
 
 h1 {
+  font-size: 1.5rem;
   line-height: 1.1;
+  margin: auto 0;
+  text-align: center;
 }
 
 button {
